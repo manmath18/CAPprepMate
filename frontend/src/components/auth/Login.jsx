@@ -10,6 +10,8 @@ import { setLoading, setUser } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
 import { Input } from "../ui/input";
 
+const BackendURL = import.meta.env.VITE_BACKEND_URL;
+
 const Login = () => {
   const { user, loading } = useSelector((store) => store.auth);
   const [input, setInput] = useState({
@@ -18,36 +20,49 @@ const Login = () => {
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
+
   const submitHandler = async (e) => {
     e.preventDefault();
+
+    // Check if input fields are filled
+    if (!input.email || !input.password) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
     try {
       dispatch(setLoading(true));
-      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, input, {
+      // Use the environment variable
+      const res = await axios.post(`${BackendURL}/login`, input, {
         headers: {
           "Content-Type": "application/json",
         },
         withCredentials: true,
       });
+
       if (res.data.success) {
         dispatch(setUser(res.data.user));
         navigate("/");
         toast.success(res.data.message);
       }
     } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.message);
+      console.error("Login error:", error);
+      toast.error(error.response?.data?.message || "An error occurred during login");
     } finally {
       dispatch(setLoading(false));
     }
   };
+
   useEffect(() => {
     if (user) {
       navigate("/");
     }
-  }, []);
+  }, [user, navigate]);
+
   return (
     <div>
       <Navbar />

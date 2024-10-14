@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
 
+const BackendURL = import.meta.env.VITE_BACKEND_URL;
+
 const Signup = () => {
   const { user, loading } = useSelector((store) => store.auth);
   const [input, setInput] = useState({
@@ -24,35 +26,48 @@ const Signup = () => {
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
+
   const submitHandler = async (e) => {
     e.preventDefault();
+
+    // Basic validation to ensure all fields are filled
+    if (!input.fullname || !input.email || !input.phoneNumber || !input.password) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("fullname", input.fullname);
     formData.append("email", input.email);
     formData.append("phoneNumber", input.phoneNumber);
     formData.append("password", input.password);
+
     try {
       dispatch(setLoading(true));
-      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/register`, formData, {
+      const res = await axios.post(`${BackendURL}/register`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       });
+
       if (res.data.success) {
         navigate("/login");
         toast.success(res.data.message);
       }
     } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.message);
+      console.error("Signup error:", error);
+      // Use optional chaining to avoid errors if response data is undefined
+      toast.error(error.response?.data?.message || "An error occurred during signup");
     } finally {
       dispatch(setLoading(false));
     }
   };
+
   useEffect(() => {
     if (user) {
       navigate("/");
     }
-  }, []);
+  }, [user, navigate]);
+
   return (
     <div>
       <Navbar />
@@ -108,7 +123,6 @@ const Signup = () => {
           </div>
           {loading ? (
             <Button className="w-full my-4">
-              {" "}
               <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait{" "}
             </Button>
           ) : (
