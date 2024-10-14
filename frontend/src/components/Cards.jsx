@@ -72,7 +72,7 @@ const Cards = () => {
                   Convert marks to percentile for better evaluation.
                 </p>
                 {
-                  <Link to={user ? "/collegep" : "/signup"}>
+                  <Link to={user ? "/percentilep" : "/signup"}>
                     <button className="mt-8 mb-4 py-2 px-14 rounded-full bg-[#8148e2] text-white tracking-widest hover:bg-green-500 transition duration-200">
                       MORE
                     </button>

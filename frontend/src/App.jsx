@@ -5,6 +5,7 @@ import Login from "./components/auth/Login";
 import Home from "./components/Home";
 import CollegeP from "./components/CollegeP";
 import RankP from "./components/RankP";
+import PercentileP from "./components/PercentileP";
 
 const appRouter = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const appRouter = createBrowserRouter([
   {
     path:"/rankp",
     element:<RankP/>
+  },
+  {
+    path:"/percentilep",
+    element:<PercentileP/>
   }
 ]);
 function App() {
