@@ -5,10 +5,12 @@ import { LogOut, User2 } from "lucide-react";
 import { Link,useNavigate} from "react-router-dom";
 import { Button } from "../ui/button";
 import { useDispatch, useSelector } from 'react-redux'
-import axios from 'axios'
-import { USER_API_END_POINT } from '@/utils/constant'
 import { setUser } from '@/redux/authSlice'
 import { toast } from 'sonner'
+import axios from "axios"; 
+import { data } from "autoprefixer";
+
+const BackendURL = import.meta.env.VITE_BACKEND_URL;
 
 const Navbar = () => {
   const { user } = useSelector(store => store.auth);
@@ -16,18 +18,20 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const logoutHandler = async () => {
-      try {
-          const res = await axios.get(`${USER_API_END_POINT}/logout`, { withCredentials: true });
-          if (res.data.success) {
-              dispatch(setUser(null));
-              navigate("/");
-              toast.success(res.data.message);
-          }
-      } catch (error) {
-          console.log(error);
-          toast.error(error.response.data.message);
-      }
+    try {
+        const res = await axios.get(`${BackendURL}/logout`, {}, { withCredentials: true }); // Ensure it's the correct method
+        if (res.data.success) {
+            dispatch(setUser(null));
+            navigate("/");
+            toast.success(res.data.message);
+        } else {
+            toast.error("Logout failed, please try again.");
+        }
+    } catch (error) {
+        console.error("Logout error:", error); 
+        toast.error(error.response?.data?.message || "An error occurred during logout");
     }
+}
   return (
     <div className="bg-white">
       <div className="flex items-center justify-between mx-auto max-w-7xl h-16">
