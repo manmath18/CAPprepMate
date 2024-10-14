@@ -10,6 +10,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLoading, setUser } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
 import { Input } from "../ui/input";
+import { dotenv } from 'dotenv';
+
+dotenv.config({});
 
 const Login = () => {
   const { user, loading } = useSelector((store) => store.auth);
@@ -26,7 +29,7 @@ const Login = () => {
     e.preventDefault();
     try {
       dispatch(setLoading(true));
-      const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
+      const res = await axios.post(`${process.env.USER_API_END_POINT}/login`, input, {
         headers: {
           "Content-Type": "application/json",
         },
