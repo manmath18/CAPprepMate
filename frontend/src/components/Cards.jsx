@@ -46,7 +46,7 @@ const Cards = () => {
                 <p class="mt-4 text-gray-600">
                 Predict rank based on student performance and available data.
                 </p>
-                <Link to="/signup"><button class="mt-8 mb-4 py-2 px-14 rounded-full bg-[#8148e2] text-white tracking-widest hover:bg-green-500 transition duration-200">
+                <Link to="/rankp"><button class="mt-8 mb-4 py-2 px-14 rounded-full bg-[#8148e2] text-white tracking-widest hover:bg-green-500 transition duration-200">
                   MORE
                 </button></Link>
               </div>

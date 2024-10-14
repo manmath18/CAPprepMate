@@ -1,9 +1,12 @@
 import React from 'react'
+import CollegePredictor from './CollegePrediction'
+import CollegePredictorWithFilters from './FilterTable'
 
 const CollegeP = () => {
   return (
     <div>
-      <h1>College Prediction</h1>
+      <CollegePredictor/>
+      <CollegePredictorWithFilters/>
     </div>
   )
 }
