@@ -1,9 +1,9 @@
 import React from "react";
-import SCard from "./SCard";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Cards = () => {
-    const user=true;
+  const user = useSelector((store) => store.auth.user);
   return (
     <div>
       <div class="bg-blue-400 py-14">
@@ -21,14 +21,15 @@ const Cards = () => {
               <div class="mt-4 text-[#8148e2] text-center">
                 <h1 class="text-xl font-bold">College Prediction</h1>
                 <p class="mt-4 text-gray-600">
-                Predict the best-fit colleges based on rank and percentile analysis.
+                  Predict the best-fit colleges based on rank and percentile
+                  analysis.
                 </p>
                 {
-                    !user ? <Link to="/signup"><button class="mt-8 mb-4 py-2 px-14 rounded-full bg-[#8148e2] text-white tracking-widest hover:bg-green-500 transition duration-200">
-                    MORE
-                  </button></Link> : <Link to="/collegep"><button class="mt-8 mb-4 py-2 px-14 rounded-full bg-[#8148e2] text-white tracking-widest hover:bg-green-500 transition duration-200">
-                  MORE
-                </button></Link>
+                  <Link to={!user ? "/signup" : "/collegep"}>
+                    <button className="mt-8 mb-4 py-2 px-14 rounded-full bg-[#8148e2] text-white tracking-widest hover:bg-green-500 transition duration-200">
+                      MORE
+                    </button>
+                  </Link>
                 }
               </div>
             </div>
@@ -44,11 +45,15 @@ const Cards = () => {
               <div class="mt-4 text-[#8148e2] text-center">
                 <h1 class="text-xl font-bold">Rank Prediction</h1>
                 <p class="mt-4 text-gray-600">
-                Predict rank based on student performance and available data.
+                  Predict rank based on student performance and available data.
                 </p>
-                <Link to="/rankp"><button class="mt-8 mb-4 py-2 px-14 rounded-full bg-[#8148e2] text-white tracking-widest hover:bg-green-500 transition duration-200">
-                  MORE
-                </button></Link>
+                {
+                  <Link to={user ? "/rankp" : "/signup"}>
+                    <button className="mt-8 mb-4 py-2 px-14 rounded-full bg-[#8148e2] text-white tracking-widest hover:bg-green-500 transition duration-200">
+                      MORE
+                    </button>
+                  </Link>
+                }
               </div>
             </div>
           </div>
@@ -60,13 +65,19 @@ const Cards = () => {
                 alt=""
               />
               <div class="mt-4 text-[#8148e2] text-center">
-                <h1 class="text-xl font-bold">Marks to Percentile Prediction</h1>
+                <h1 class="text-xl font-bold">
+                  Marks to Percentile Prediction
+                </h1>
                 <p class="mt-4 text-gray-600">
-                Convert marks to percentile for better evaluation.
+                  Convert marks to percentile for better evaluation.
                 </p>
-                <Link to="/signup"><button class="mt-8 mb-4 py-2 px-14 rounded-full bg-[#8148e2] text-white tracking-widest hover:bg-green-500 transition duration-200">
-                  MORE
-                </button></Link>
+                {
+                  <Link to={user ? "/collegep" : "/signup"}>
+                    <button className="mt-8 mb-4 py-2 px-14 rounded-full bg-[#8148e2] text-white tracking-widest hover:bg-green-500 transition duration-200">
+                      MORE
+                    </button>
+                  </Link>
+                }
               </div>
             </div>
           </div>
