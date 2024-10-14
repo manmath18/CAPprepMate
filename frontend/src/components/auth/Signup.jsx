@@ -5,14 +5,10 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { USER_API_END_POINT } from "@/utils/constant";
 import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
-import { dotenv } from 'dotenv';
-
-dotenv.config({});
 
 const Signup = () => {
   const { user, loading } = useSelector((store) => store.auth);
@@ -37,7 +33,7 @@ const Signup = () => {
     formData.append("password", input.password);
     try {
       dispatch(setLoading(true));
-      const res = await axios.post(`${process.env.USER_API_END_POINT}/register`, formData, {
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/register`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       });

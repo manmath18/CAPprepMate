@@ -4,15 +4,11 @@ import { Label } from "../ui/label";
 import { Button } from "../ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { USER_API_END_POINT } from "@/utils/constant";
 import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading, setUser } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
 import { Input } from "../ui/input";
-import { dotenv } from 'dotenv';
-
-dotenv.config({});
 
 const Login = () => {
   const { user, loading } = useSelector((store) => store.auth);
@@ -29,7 +25,7 @@ const Login = () => {
     e.preventDefault();
     try {
       dispatch(setLoading(true));
-      const res = await axios.post(`${process.env.USER_API_END_POINT}/login`, input, {
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, input, {
         headers: {
           "Content-Type": "application/json",
         },
