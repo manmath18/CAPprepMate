@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from '@/redux/authSlice'
 import { toast } from 'sonner'
 import axios from "axios"; 
-import { data } from "autoprefixer";
 
 const BackendURL = import.meta.env.VITE_BACKEND_URL;
 

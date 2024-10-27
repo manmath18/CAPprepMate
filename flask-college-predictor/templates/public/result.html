@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MHTCET College Prediction Result</title>
+</head>
+<body>
+    <h1>College Prediction Result</h1>
+    <p>Your Rank: {{ ranks }}</p>
+    <p>Category: {{ category }}</p>
+
+    <h2>College List</h2>
+    <div>
+        {{ tables|safe }}
+    </div>
+
+    <br>
+    <a href="/">Go Back</a>
+</body>
+</html>

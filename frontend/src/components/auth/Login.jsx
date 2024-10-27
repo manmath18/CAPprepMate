@@ -10,7 +10,7 @@ import { setLoading, setUser } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
 import { Input } from "../ui/input";
 
-const BackendURL = import.meta.env.VITE_BACKEND_URL;
+const BackendURL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001"; // Fallback URL
 
 const Login = () => {
   const { user, loading } = useSelector((store) => store.auth);
@@ -18,13 +18,13 @@ const Login = () => {
     email: "",
     password: "",
   });
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
-
   const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -69,7 +69,7 @@ const Login = () => {
       <div className="flex items-center justify-center max-w-7xl mx-auto">
         <form
           onSubmit={submitHandler}
-          className="w-1/2 border border-gray-200 rounded-md p-4 my-10"
+          className="w-full md:w-1/2 border border-gray-200 rounded-md p-4 my-10"
         >
           <h1 className="font-bold text-xl mb-5">Login</h1>
           <div className="my-2">
@@ -81,6 +81,7 @@ const Login = () => {
               autoComplete="current-email"
               onChange={changeEventHandler}
               placeholder="Enter your Email Here.."
+              required
             />
           </div>
           <div className="my-2">
@@ -92,13 +93,13 @@ const Login = () => {
               autoComplete="current-password"
               onChange={changeEventHandler}
               placeholder="Enter your Password Here.."
+              required
             />
           </div>
           <div className="flex items-center justify-between"></div>
           {loading ? (
             <Button className="w-full my-4">
-              {" "}
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait{" "}
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait
             </Button>
           ) : (
             <Button type="submit" className="w-full my-4 bg-[#6A38C2]">

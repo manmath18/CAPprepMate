@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MHTCET College Predictor</title>
+</head>
+<body>
+    <h1>MHTCET College Predictor</h1>
+    <form method="POST">
+        <label for="percentile">Percentile:</label>
+        <input type="text" name="percentile" id="percentile" placeholder="Enter Percentile">
+        <br>
+
+        <label for="rank">Rank:</label>
+        <input type="text" name="rank" id="rank" placeholder="Enter Rank">
+        <br>
+
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+        <br>
+
+        <label for="category">Category:</label>
+        <select name="category" id="category">
+            <option value="GOPENS">General</option>
+            <option value="GSCS">SC</option>
+            <option value="GSTS">ST</option>
+            <option value="GOBCS">OBC</option>
+            <option value="EWS">EWS</option>
+        </select>
+        <br>
+
+        <label for="pwd">PWD:</label>
+        <select name="pwd" id="pwd">
+            <option value="NO">No</option>
+            <option value="YES">Yes</option>
+        </select>
+        <br>
+
+        <label for="state">State:</label>
+        <input type="text" name="state" id="state" placeholder="Enter State">
+        <br>
+
+        <label for="sortby">Sort By:</label>
+        <select name="sortby" id="sortby">
+            <option value="Rank">Rank</option>
+            <option value="Percentile">Percentile</option>
+        </select>
+        <br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

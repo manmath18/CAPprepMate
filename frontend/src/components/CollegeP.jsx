@@ -6,7 +6,6 @@ const CollegeP = () => {
   return (
     <div>
       <CollegePredictor/>
-      <CollegePredictorWithFilters/>
     </div>
   )
 }

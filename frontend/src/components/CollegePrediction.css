@@ -1,0 +1,216 @@
+/* Container for the form */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #f7f9fc;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Title of the form */
+.form-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Form styling */
+.prediction-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Styling individual form groups */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels and inputs styling */
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 14px;
+}
+
+.form-control {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Submit button styling */
+.submit-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 12px rgba(0, 91, 187, 0.2);
+}
+
+/* Error message styling */
+.error-message {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Results container styling */
+.results-container {
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    position: relative; /* Added for positioning */
+}
+
+/* Button for downloading the PDF */
+.top-right-btn {
+    position: absolute; /* Positioning it relative to the results container */
+    right: 0; /* Align to the right */
+    top: 0; /* Align to the top */
+}
+
+.download-btn {
+    margin-top: 0; /* Remove top margin for alignment */
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #28a745; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #218838; /* Darker green on hover */
+    box-shadow: 0 4px 12px rgba(33, 136, 56, 0.2);
+}
+
+/* Results table */
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.results-table th, .results-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.results-table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.results-table td {
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+}
+
+.results-table tr:hover td {
+    background-color: #f1f1f1;
+}
+
+.results-table tr:nth-child(even) td {
+    background-color: #f7f7f7;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    .form-control {
+        font-size: 14px;
+    }
+
+    .submit-btn {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+    .results-table th, .results-table td {
+        padding: 10px;
+        font-size: 12px;
+    }
+}
+/* Container for the form */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #f7f9fc;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Results container styling */
+.results-container {
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    position: relative; /* Added for positioning */
+}
+
+/* Button for downloading the PDF */
+.top-right-btn {
+    position: absolute; /* Positioning it relative to the results container */
+    right: 30px; /* Add some space from the right */
+    top: 20px; /* Add some space from the top */
+}
+
+.download-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #28a745; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #218838; /* Darker green on hover */
+    box-shadow: 0 4px 12px rgba(33, 136, 56, 0.2);
+}
+
+/* Other existing CSS remains unchanged */
